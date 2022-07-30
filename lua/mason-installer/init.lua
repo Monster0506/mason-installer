@@ -2,7 +2,7 @@ local mr = require "mason-registry"
 
 local SETTINGS = {
     ensure_installed = {},
-    auto_update = false,
+    auto_update = true,
     run_on_start = true,
     start_delay = 0
 }
