@@ -1,4 +1,4 @@
-# mason-tool-installer
+# mason-installer
 
 Install or upgrade all of your third-party tools.
 
@@ -19,20 +19,20 @@ Install using your favorite plugin manager.
 If you use vim-plug:
 
 ```vim
-Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+Plug 'monster0506/mason-installer'
 ```
 
 Or if you use Vim 8 style packages:
 
 ```bash
 cd <plugin dir>
-git clone https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+git clone https://github.com/monster0506/mason-installer
 ```
 
 ## Configuration
 
 ```lua
-require'mason-tool-installer'.setup {
+require'mason-installer'.setup {
 
     -- a list of all tools you want to ensure are installed upon
     -- start; they should be the names Mason uses for each tool
@@ -90,5 +90,5 @@ require'mason-tool-installer'.setup {
 
 ## Suggestions / Complaints / Help
 
-Please feel free to start a [discussion](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/discussions) or
-file a [bug report](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues).
+Please feel free to start a [discussion](https://github.com/monster0506/mason-installer/discussions) or
+file a [bug report](https://github.com/monster0506/mason-installer/issues).
