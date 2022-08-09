@@ -12,3 +12,17 @@ vim.api.nvim_create_user_command(
     end,
     {force = true}
 )
+vim.api.nvim_create_user_command(
+    "MasonToolsUpdate",
+    function()
+        require("mason-installer").check_install(true)
+    end,
+    {force = true}
+)
+vim.api.nvim_create_user_command(
+    "MasonToolsInstall",
+    function()
+        require("mason-installer").check_install(false)
+    end,
+    {force = true}
+)

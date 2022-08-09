@@ -1,3 +1,4 @@
+-- mine
 local mr = require "mason-registry"
 
 local SETTINGS = {
@@ -31,13 +32,13 @@ local do_install = function(p, version)
     else
         show(string.format("%s: installing", p.name))
     end
-    p:on(
+    p:once(
         "install:success",
         function()
             show(string.format("%s: successfully installed", p.name))
         end
     )
-    p:on(
+    p:once(
         "install:failed",
         function()
             show_error(string.format("%s: failed to install", p.name))
@@ -46,7 +47,7 @@ local do_install = function(p, version)
     p:install {version = version}
 end
 
-local check_install = function(do_update)
+local check_install = function(force_update)
     for _, item in ipairs(SETTINGS.ensure_installed or {}) do
         local name, version, auto_update
         if type(item) == "table" then
@@ -66,7 +67,9 @@ local check_install = function(do_update)
                         end
                     end
                 )
-            elseif do_update or auto_update or (auto_update == nil and SETTINGS.auto_update) then
+            elseif
+                force_update or (force_update == nil and (auto_update or (auto_update == nil and SETTINGS.auto_update)))
+             then
                 p:check_new_version(
                     function(ok, version)
                         if ok then
