@@ -42,7 +42,7 @@ require'mason-installer'.setup {
         { 'golangci-lint', version = '1.47.0' },
 
         -- you can turn off/on auto_update per tool
-        { 'bash-language-server', auto_update = true },
+        { 'bash-language-server', auto_update = false },
 
         'lua-language-server',
         'vim-language-server',
@@ -69,7 +69,7 @@ require'mason-installer'.setup {
     -- are available the tool will be updated. This setting does not
     -- affect :MasonToolsUpdate or :MasonToolsInstall.
     -- Default: false
-    auto_update = false,
+    auto_update =true,
 
     -- automatically install / update on startup. If set to false nothing
     -- will happen on startup. You can use :MasonToolsInstall or
