@@ -1,4 +1,4 @@
-# mason-installer
+# mason-tool-installer
 
 Install or upgrade all of your third-party tools.
 
@@ -19,20 +19,20 @@ Install using your favorite plugin manager.
 If you use vim-plug:
 
 ```vim
-Plug 'monster0506/mason-installer'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 ```
 
 Or if you use Vim 8 style packages:
 
 ```bash
 cd <plugin dir>
-git clone https://github.com/monster0506/mason-installer
+git clone https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 ```
 
 ## Configuration
 
 ```lua
-require'mason-installer'.setup {
+require'mason-tool-installer'.setup {
 
     -- a list of all tools you want to ensure are installed upon
     -- start; they should be the names Mason uses for each tool
@@ -42,7 +42,7 @@ require'mason-installer'.setup {
         { 'golangci-lint', version = '1.47.0' },
 
         -- you can turn off/on auto_update per tool
-        { 'bash-language-server', auto_update = false },
+        { 'bash-language-server', auto_update = true },
 
         'lua-language-server',
         'vim-language-server',
@@ -69,7 +69,7 @@ require'mason-installer'.setup {
     -- are available the tool will be updated. This setting does not
     -- affect :MasonToolsUpdate or :MasonToolsInstall.
     -- Default: false
-    auto_update =true,
+    auto_update = false,
 
     -- automatically install / update on startup. If set to false nothing
     -- will happen on startup. You can use :MasonToolsInstall or
@@ -90,6 +90,20 @@ require'mason-installer'.setup {
 `:MasonToolsInstall` - only installs tools that are missing or at the incorrect version
 
 `:MasonToolsUpdate` - install missing tools and update already installed tools
+
+## Events
+
+Upon completion of any `mason-tool-installer` initiated installation/update a user event will be
+emitted named `MasonToolsUpdateComplete`. To use this event you can setup an event handler like so:
+
+```lua
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'MasonToolsUpdateComplete',
+    callback = function()
+      vim.schedule(print 'mason-tool-installer has finished')
+    end,
+  })
+```
 
 ## Suggestions / Complaints / Help
 
