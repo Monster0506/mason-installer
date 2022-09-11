@@ -94,11 +94,11 @@ require('mason-installer').setup {
 ## Events
 
 Upon completion of any `mason-installer` initiated installation/update a user event will be
-emitted named `MasonUpdateComplete`. To use this event you can setup an event handler like so:
+emitted named `MasonUpdateCompleted`. To use this event you can setup an event handler like so:
 
 ```lua
   vim.api.nvim_create_autocmd('User', {
-    pattern = 'MasonUpdateComplete',
+    pattern = 'MasonUpdateCompleted',
     callback = function()
       vim.schedule(print 'mason-installer has finished')
     end,
